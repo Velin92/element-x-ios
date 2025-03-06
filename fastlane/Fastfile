@@ -6,7 +6,7 @@ if File.exist?(enterprise)
 end
 
 before_all do
-  xcversion(version: "16.1")
+  xcversion(version: "16.2")
 
   ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
   ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
@@ -284,19 +284,20 @@ lane :prepare_next_release do
   rebase_current_branch_onto_main()
 end
 
+lane :rebase_current_branch_onto_main do
+  rebase_current_branch_onto_main()
+end
+
 def rebase_current_branch_onto_main
   # Capture the current branch name
   current_branch = sh("git rev-parse --abbrev-ref HEAD").strip
 
   UI.message("Current branch: #{current_branch}")
 
-  # Switch to main and update it
+  # Switch to main and rebase it
   sh("git checkout main")
-  sh("git pull origin main")
-
-  # Switch back to the original branch and rebase
-  sh("git checkout #{current_branch}")
-  sh("git rebase main")
+  sh("git pull personal main")
+  sh("git rebase #{current_branch}")
 
   git_push()
 

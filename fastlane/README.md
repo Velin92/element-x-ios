@@ -13,6 +13,22 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
+### config_enterprise
+
+```sh
+[bundle exec] fastlane config_enterprise
+```
+
+
+
+### run_pipeline
+
+```sh
+[bundle exec] fastlane run_pipeline
+```
+
+
+
 ### build_alpha
 
 ```sh
@@ -81,6 +97,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ```sh
 [bundle exec] fastlane prepare_next_release
+```
+
+
+
+### rebase_current_branch_onto_main
+
+```sh
+[bundle exec] fastlane rebase_current_branch_onto_main
 ```
 
 
